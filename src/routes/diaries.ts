@@ -14,14 +14,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    console.log(req.body)
     const newDiaryEntry = toNewDiaryEntry(req.body)
 
     const addedDiaryEntry = diaryServices.addDiary(newDiaryEntry)
 
     res.send(addedDiaryEntry)
   } catch (error) {
-    console.log(error)
     res.status(400).send((error as Error).message)
   }
 })
